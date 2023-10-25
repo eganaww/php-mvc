@@ -12,7 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('inventaris', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_inventaris');
+            $table->string('nama');
+            $table->string('kondisi');
+            $table->string('keterangan');
+            $table->string('jumlah');
+            $table->foreignId('id_jenis')->on('jenis');
+            $table->foreignId('id_ruang')->on('ruangs');
+            $table->string('kode_inventaris');
+            $table->foreignId('id_petugas')->on('petugas');
             $table->timestamps();
         });
     }

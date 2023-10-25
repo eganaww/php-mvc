@@ -3,20 +3,15 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
 
-class StoreInventarisRequest extends FormRequest
+class StoreJenisRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        if (Auth::guard('petugas')->check()) {
-            return true;
-        } else {
-            return false;
-        }
+        return false;
     }
 
     /**

@@ -31,9 +31,11 @@ Route::post('/login', [LoginController::class, 'login']);
 // Route::get('/dashboard', [PagesController::class, 'dashboard']);
 
 Route::group(['middleware' => ['authWeb']], function () {
-    Route::get('/dashboard', [PagesController::class, 'dashboard']);
+    Route::get('/dashboard', [PagesController::class, 'dashboard'])->name('datadashboard');
     Route::get('/dashboard/inventaris', [InventarisController::class, 'index'])->name('datainventaris');
+    Route::resource('/dashboard/datainvent', InventarisController::class);
     // Route::resource('/dashboard/inventaris', InventarisController::class);
+    Route::get('/dashboard/inventaris/laporan', [InventarisController::class, 'laporan']);
 });
 
 Route::get('/logout', [LoginController::class, "logout"]);
